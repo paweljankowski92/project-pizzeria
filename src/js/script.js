@@ -32,14 +32,12 @@
       },
     },
   };
-
   const classNames = {
     menuProduct: {
       wrapperActive: 'active',
       imageVisible: 'active',
     },
   };
-
   const settings = {
     amountWidget: {
       defaultValue: 1,
@@ -47,11 +45,9 @@
       defaultMax: 9,
     }
   };
-
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   };
-
 
   class Product{
     constructor (id, data){
@@ -84,34 +80,51 @@
 
     getElements(){
       const thisProduct = this;
-        thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
-        thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
-        thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
-        thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
-        thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
-      }
+      thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+      thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
+      thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
+      thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
+      thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+    }
 
     initAccordion() {
       const thisProduct = this;
 
       /* find the clickable trigger (the element that should react to clicking) */
-      const clickableTrigger = select.menuProduct.clickable;
+      const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
 
       /* START: add event listener to clickable trigger on event click */
       clickableTrigger.addEventListener('click', function(event) {
       /* prevent default action for event */
-        event.preventDefault()
+        event.preventDefault();
 
         /* find active product (product that has active class) */
-        const activeProducts = document.querySelectorAll('.product.active')
+        const activeProducts = document.querySelectorAll('.product.active');
         /* if there is active product and it's not thisProduct.element, remove class active from it */
-        for(let activeProduct of activeProducts) {
-          if(activeProduct !== thisProduct){
-            activeProduct.classList.remove('.active')}
-        /* toggle active class on thisProduct.element */
-        thisProduct.element.classList.toogle('.active')
-      }});
+
+        for (let activeProduct of activeProducts) {
+          if (activeProduct !== thisProduct.element){
+            activeProduct.classList.remove('active');
+          }
+          /* toggle active class on thisProduct.element */
+        }
+
+        thisProduct.element.classList.toggle('active');
+      });
+    }
   }
+  //
+  // for (let optionId in param.options) {
+  //   const option = param.options[optionId];
+  //   const optionsSelected = formData.hasOwnProperty// true/false
+  //
+  //   if (optionSelected && !option.default) {
+  //     price += option.price;
+  //   } else if (!optionSelected && option.default) {
+  //     price -= option.price;
+  //   }
+  // }
+
   const app = {
     initMenu: function (){
       const thisApp = this;
@@ -119,13 +132,12 @@
       for(let productData in thisApp.data.products){
         new Product(productData, thisApp.data.products[productData]);
       }
-    }
-    initData: function(){
+    },
+    initData: function() {
       const thisApp = this;
 
-      thisApp.data = dataSource
-
-
+      thisApp.data = dataSource;
+    },
     init: function(){
       const thisApp = this;
       console.log('*** App starting ***');
@@ -133,11 +145,10 @@
       console.log('classNames:', classNames);
       console.log('settings:', settings);
       console.log('templates:', templates);
-}}
       thisApp.initData();
       thisApp.initMenu();
-
-
+    },
+  };
 
   app.init();
 }
