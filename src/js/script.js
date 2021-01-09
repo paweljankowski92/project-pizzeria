@@ -63,11 +63,13 @@
 
       thisProduct.renderInMenu();
       thisProduct.initAccordion();
+      thisProduct.getElements();
 
       console.log('new Product:' , thisProduct);
 
     }
     renderInMenu(){
+
       const thisProduct = this;
       /*generate HTML based on templae*/
       const generatedHTML = templates.menuProduct(thisProduct.data);
@@ -79,25 +81,36 @@
       /*add element to menu*/
       menuContainer.appendChild(thisProduct.element);
     }
-    initAccordion(){
-        const thisProduct = this;
 
-        /* find the clickable trigger (the element that should react to clicking) */
-        const clickableTrigger = select.menuProduct.clickable;
+    getElements(){
+      const thisProduct = this;
+        thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
+        thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
+        thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
+        thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
+        thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      }
 
-        /* START: add event listener to clickable trigger on event click */
-        clickableTrigger.addEventListener('click', function(event) {
-          /* prevent default action for event */
-          event.preventDefault();
+    initAccordion() {
+      const thisProduct = this;
 
-          /* find active product (product that has active class) */
-          const activeProduct = document.querySelectorAll('active');
-          /* if there is active product and it's not thisProduct.element, remove class active from it */
-          
-          /* toggle active class on thisProduct.element */
-          thisProduct.element.toogle("active");
-        });
-    }
+      /* find the clickable trigger (the element that should react to clicking) */
+      const clickableTrigger = select.menuProduct.clickable;
+
+      /* START: add event listener to clickable trigger on event click */
+      clickableTrigger.addEventListener('click', function(event) {
+      /* prevent default action for event */
+        event.preventDefault()
+
+        /* find active product (product that has active class) */
+        const activeProducts = document.querySelectorAll('.product.active')
+        /* if there is active product and it's not thisProduct.element, remove class active from it */
+        for(let activeProduct of activeProducts) {
+          if(activeProduct !== thisProduct){
+            activeProduct.classList.remove('.active')}
+        /* toggle active class on thisProduct.element */
+        thisProduct.element.classList.toogle('.active')
+      }});
   }
   const app = {
     initMenu: function (){
@@ -106,12 +119,12 @@
       for(let productData in thisApp.data.products){
         new Product(productData, thisApp.data.products[productData]);
       }
-    },
+    }
     initData: function(){
       const thisApp = this;
 
-      thisApp.data = dataSource;
-    },
+      thisApp.data = dataSource
+
 
     init: function(){
       const thisApp = this;
@@ -120,12 +133,11 @@
       console.log('classNames:', classNames);
       console.log('settings:', settings);
       console.log('templates:', templates);
-
+}}
       thisApp.initData();
-
       thisApp.initMenu();
-    },
-  };
+
+
 
   app.init();
 }
