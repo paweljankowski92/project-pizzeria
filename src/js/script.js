@@ -288,17 +288,15 @@
     initActions () {
       const thisCart = this;
 
-      thisCart.dom.toggleTrigger.addEventListener('click', function(event) {
-        event.preventDefault();
-        // const thisCart.dom.wrapper = document.querySelector('active');
+      thisCart.dom.toggleTrigger.addEventListener('click', function (event) {
 
-        const activeCart = document.querySelector(classNames.cart.wrapperActive);
-        console.log('activecart' , activeCart)
-        activeCart.classList.toogle('.active');
-        // console.log('activeWrapper', activeWrapper);
-      });
+      event.preventDefault ();
+
+      thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive)
+    });
     }
-  }
+}
+
   const app = {
     initMenu: function (){
       const thisApp = this;
