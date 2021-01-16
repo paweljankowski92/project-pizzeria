@@ -227,43 +227,45 @@
     prepareCartProduct() {
       const thisProduct = this;
 
-      // const productSummary = {id: thisProduct.id, name: thisProduct.data.name, amount: thisProduct.amountWidget.value, priceSingle: thisProduct.priceSingle, price: priceSingle *= amount, params: {} };
-      //
+      const productSummary = {id: thisProduct.id, name: thisProduct.data.name, amount: thisProduct.amountWidget.value };
+      // priceSingle: thisProduct.priceSingle, price: priceSingle *= amount, params: {}
+
       return productSummary;
 
     }
 
-    prepareCartProductParams () {
-      const thisProduct = this;
-      // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
-      const formData = utils.serializeFormToObject(thisProduct.form);
-      // set price to default price
-      const params = {};
-      // for every category (param)...
-      for(let paramId in thisProduct.data.params) {
-        // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
-        const param = thisProduct.data.params[paramId];
-
-        params[paramId] = {
-          name: param.label,
-          options: {}
-        };
-        // for every option in this category
-        for(let optionId in param.options) {
-          // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
-          const option = param.options[optionId];
-          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
-          // const optionsSelected = formData.hasOwnProperty;
-          if (formData[paramId] && formData[paramId].includes(optionId)) {
-          //   if(optionSelected) {
-          //
-          //    }
-          // }
-        }
-
-
-      }
-    }
+    // prepareCartProductParams () {
+    //   const thisProduct = this;
+    //   // covert form to object structure e.g. { sauce: ['tomato'], toppings: ['olives', 'redPeppers']}
+    //   const formData = utils.serializeFormToObject(thisProduct.form);
+    //   // set price to default price
+    //   const params = {};
+    //   // for every category (param)...
+    //   for(let paramId in thisProduct.data.params) {
+    //     // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
+    //     const param = thisProduct.data.params[paramId];
+    //
+    //     params[paramId] = {
+    //       name: param.label,
+    //       options: {}
+    //     };
+    //     // for every option in this category
+    //     for(let optionId in param.options) {
+    //       // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
+    //       const option = param.options[optionId];
+    //       const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+    //       // const optionsSelected = formData.hasOwnProperty;
+    //       if (formData[paramId] && formData[paramId].includes(optionId)) {
+    //       //   if(optionSelected) {
+    //       //
+    //       //    }
+    //       // }
+    //       }
+    //
+    //
+    //     }
+    //   }
+    // }
   }
 
   class AmountWidget {
