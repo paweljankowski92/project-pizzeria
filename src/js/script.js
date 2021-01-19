@@ -407,16 +407,16 @@
       thisCartProduct.dom.remove = element.querySelector(select.cartProduct.remove);
     }
 
-  initAmountWidget() {
-    const thisCartProduct = this;
+    initAmountWidget() {
+      const thisCartProduct = this;
 
-    thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
-    thisCartProduct.dom.amountWidget.addEventListener('updated', function() {
-      thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
+      thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
+      thisCartProduct.dom.amountWidget.addEventListener('updated', function() {
+        thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
       });
-  }
+    }
 
-}
+  }
 
   const app = {
     initMenu: function (){
