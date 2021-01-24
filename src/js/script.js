@@ -371,16 +371,16 @@
       });
     }
 
-    // remove(cartProduct)  {
-    //   const thisCart = this;
+    remove(cartProduct)  {
+      const thisCart = this;
 
-    // thisCart.dom.productList.remove();
-    // const indexOfCartProduct = cartProduct.indexOf(' ');
-    // console.log(indexOfCartProduct);
-    // const removedCartProduct = cartProduct.splice(0, 1);
-    // thisCart.update();
+      const indexOfCartProduct = thisCart.products.indexOf(cartProduct);
+      console.log(indexOfCartProduct);
+      const removedCartProduct = thisCart.products.splice(indexOfCartProduct, 1);
+      removedCartProduct[0].dom.wrapper.remove();
+      thisCart.update();
 
-    // }
+    }
 
     add(menuProduct) {
       const thisCart = this;
@@ -518,7 +518,7 @@
         .then(function(parsedResponse){
           console.log('parsedResponse', parsedResponse);
           // save parsedResponse as thisApp.data.products */
-          parsedResponse = thisApp.data.products;
+          thisApp.data.products = parsedResponse;
           // execute initMenu method
           app.initMenu();
         });
