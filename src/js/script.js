@@ -440,23 +440,28 @@
         subTotalPrice: thisCart.subtotalPrice,
         totalNumber: thisCart.totalNumber,
         deliveryFee: thisCart.deliveryFee,
-        products: {},
+        products: [],
       };
 
       for(let prod of thisCart.products) {
         payload.products.push(prod.getData());
       }
       console.log('payload', payload);
+
       const options = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          },
+        },
         body: JSON.stringify(payload),
       };
 
-      fetch(url, options);
-
+      fetch(url, options)
+        .then(function(response) {
+          return response.json();
+        }).then(function(parsedResponse){
+          console.log('parsedResponse', parsedResponse);
+        });
     }
 
   }
