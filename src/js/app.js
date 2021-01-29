@@ -20,14 +20,12 @@ const app = {
       }
     }
 
-    thisApp.activatePage(idFromHash);
-
+    thisApp.activatePage(pageMatchingHash);
     for(let link of thisApp.navLinks) {
       link.addEventListener('click', function(event){
         const clickedElement = this;
         event.preventDefault();
-        // get page id from href atrubiute
-        const id = clickedElement.getAttribute('href').replace('#', ' ');
+        const id = clickedElement.getAttribute('href').replace('#', '');
         // run thisApp.activatePage with that id
         thisApp.activatePage(id);
         // change URL hash
@@ -44,11 +42,11 @@ const app = {
     }
     // add class 'active' to matching links, remove from non-matching
     for(let link of thisApp.navLinks){
-  link.classList.toggle(
-    classNames.nav.active,
-    link.getAttribute('href') == '#' + pageId
-    );
-  }
+      link.classList.toggle(
+        classNames.nav.active,
+        link.getAttribute('href') == '#' + pageId
+      );
+    }
   },
   initMenu: function (){
     const thisApp = this;
