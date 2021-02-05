@@ -173,6 +173,12 @@ class Booking {
     thisBooking.dom.hourPicker = document.querySelector(select.widgets.hourPicker.wrapper);
     thisBooking.dom.tables = document.querySelectorAll(select.booking.tables);
     thisBooking.dom.parentTables = document.querySelector(select.booking.parentTables);
+    thisBooking.dom.phone = document.querySelector(select.booking.phone);
+    thisBooking.dom.address = document.querySelector(select.booking.address);
+    thisBooking.dom.starters = document.querySelectorAll(select.booking.starters);
+    thisBooking.dom.form = document.querySelector(select.booking.form);
+
+
   }
 
   initWidgets(){
@@ -208,6 +214,11 @@ class Booking {
       thisBooking.updateDOM();
     });
 
+    thisBooking.dom.form.addEventListener('submit', function(event){
+      event.preventDefault();
+      thisBooking.sendBooking();
+    });
+
     thisBooking.dom.parentTables.addEventListener('click', function(){
       thisBooking.initTables();
     });
@@ -220,27 +231,110 @@ class Booking {
 
     const clickedElement = event.target;
 
-    if(clickedElement.classList.contains('table')) {
+    if(!clickedElement.classList.contains(classNames.booking.tableBooked)){
+      const idTable = clickedElement.getAttribute('data-table');
+      console.log('idTable', idTable);
+      const tableFilter = thisBooking.dom.tables;
 
-      if(clickedElement.classList.contains(classNames.booking.tableBooked)){
-        alert('Sorry, this table is reserved in this time');
+      for(let table of tableFilter){
+        table.classList.remove(classNames.booking.tableSelected);
       }
 
-      if(!clickedElement.classList.contains(classNames.booking.tableBooked)){
-        const idTable = clickedElement.getAttribute('data-table');
-        console.log('idTable', idTable);
+      if(thisBooking.reservationTable === idTable) {
+        thisBooking.reservationTable = null;
+        clickedElement.classList.remove(classNames.booking.tableSelected);
+      } else {
         thisBooking.reservationTable = idTable;
-        const tableFilter = thisBooking.dom.tables;
-
-        for(let table of tableFilter){
-          table.classList.remove(classNames.booking.tableSelected);
-        }
         clickedElement.classList.add(classNames.booking.tableSelected);
       }
+
+    }
   }
-    console.log('clickedElement', clickedElement);
-    console.log('reservationTable', thisBooking.reservationTable);
+
+
+  sendBooking() {
+    const thisBooking = this;
+
+    const url = settings.db.url + '/' + settings.db.booking;
+
+    const payload = {
+      date: thisBooking.datePicker.value,
+      hour: thisBooking.hourPicker.value,
+      table: thisBooking.reservationTable,
+      // duration: thisBooking.hoursAmount.value,
+      // ppl: thisBooking.peopleAmount.value,
+      starters: [],
+      phone: thisBooking.dom.phone.value,
+      address: thisBooking.dom.phone.value,
+    };
+
+    const bookingStartes = thisBooking.dom.starters;
+
+    for(let starter of bookingStartes){
+      if(starter.checked == true){
+        payload.starters.push(starter);
+      }
+
+      console.log('payload', payload);
+
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      };
+
+      fetch(url, options)
+        .then(function(response){
+          return response.json();
+        })
+        .then(function(parsedResponse){
+          console.log('parsedResponse',parsedResponse);
+          thisBooking.getData();
+        });
+
+    }
+
   }
+
+  // sendOrder () {
+  //   const thisCart = this;
+  //
+  //   const url = settings.db.url + '/' + settings.db.order;
+  //
+  //   const payload = {
+  //     address: thisCart.dom.address['value'],
+  //     phone: thisCart.dom.phone['value'],
+  //     totalPrice: thisCart.totalPrice,
+  //     subTotalPrice: thisCart.subtotalPrice,
+  //     totalNumber: thisCart.totalNumber,
+  //     deliveryFee: thisCart.deliveryFee,
+  //     products: [],
+  //   };
+  //
+  //   for(let prod of thisCart.products) {
+  //     payload.products.push(prod.getData());
+  //   }
+  //   console.log('payload', payload);
+  //
+  //   const options = {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify(payload),
+  //   };
+  //
+  //   fetch(url, options)
+  //     .then(function(response) {
+  //       return response.json();
+  //     }).then(function(parsedResponse){
+  //       console.log('parsedResponse', parsedResponse);
+  //     });
+  // }
+
 
 }
 
