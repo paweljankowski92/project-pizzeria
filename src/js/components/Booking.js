@@ -11,8 +11,9 @@ class Booking {
     thisBooking.render(element);
     thisBooking.initWidgets();
     thisBooking.getData();
-    thisBooking.reservationTable = '';
+    thisBooking.reservationTable = null;
     console.log('reservationTable', thisBooking.reservationTable);
+
   }
 
   getData(){
@@ -215,22 +216,30 @@ class Booking {
 
   initTables(){
 
-    // const thisBooking = this;
+    const thisBooking = this;
 
     const clickedElement = event.target;
+
+    if(clickedElement.classList.contains('table')) {
+
+      if(clickedElement.classList.contains(classNames.booking.tableBooked)){
+        alert('Sorry, this table is reserved in this time');
+      }
+
+      if(!clickedElement.classList.contains(classNames.booking.tableBooked)){
+        const idTable = clickedElement.getAttribute('data-table');
+        console.log('idTable', idTable);
+        thisBooking.reservationTable = idTable;
+        const tableFilter = thisBooking.dom.tables;
+
+        for(let table of tableFilter){
+          table.classList.remove(classNames.booking.tableSelected);
+        }
+        clickedElement.classList.add(classNames.booking.tableSelected);
+      }
+  }
     console.log('clickedElement', clickedElement);
-
-    if(clickedElement.classList.contains(classNames.booking.tableBooked)){
-      alert('Sorry, this table is reserved in this time');
-    }
-
-    if(!clickedElement.classList.contains(classNames.booking.tableBooked)){
-      const idTable = clickedElement.getAttribute('data-table');
-      console.log('idTable', idTable);
-      clickedElement.classList.toggle(classNames.booking.tableSelected);
-      // const tableFilter = thisBooking.dom.tables;
-
-    }
+    console.log('reservationTable', thisBooking.reservationTable);
   }
 
 }
