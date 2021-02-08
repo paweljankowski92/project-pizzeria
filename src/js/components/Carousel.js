@@ -16,9 +16,8 @@ class Carousel {
     // use plugin to create carousel on thisCarousel.element
     const thisCarousel = this;
 
-    const flickity = new Flickity (thisCarousel.wrapper, {
+    thisCarousel.init = new Flickity (thisCarousel.wrapper, {
       cellAlign: 'left',
-      wrapAround: true,
       contain: true,
       prevNextButtons: false,
       autoPlay: true,
