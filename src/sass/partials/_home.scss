@@ -1,0 +1,74 @@
+// box
+.home-wrapper {
+  margin: ($base-size * 3.5) auto;
+  padding: ($base-size * 6) ($base-size * 4);
+  background: $color-light;
+  border-bottom: 1px solid lighten($color-dark, 70%);
+  border-radius: $radius;
+}
+
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.description {
+  display: none;
+}
+
+.box {
+  height: 15vh;
+  flex: 1;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 2%;
+  color: $color-light;
+  line-height: 7.5vh
+
+}
+
+.order-online {
+  background-image: url(../../images/pizza-1.jpg);
+  background-size: cover;
+}
+
+.order-online:hover > h3 {
+  transition-timing-function: ease;
+  transition-property: margin-top;
+  transition-duration: .2s;
+  margin-top: -3px;
+}
+
+.order-online:hover > .description {
+  margin-top: -15px;
+  display: block;
+
+}
+
+.book-table {
+  background-image: url(../../images/pizza-2.jpg);
+  background-size: cover;
+  margin-left: 5px
+}
+
+// open
+
+.open {
+  // padding-top: 10px;
+  height: 15vh;
+  background: $color-main;
+  text-align: center;
+  align-items: center;
+  color: $color-light;
+  border-radius: 2px;
+  line-height: 6vh;
+}
+
+// Carousel
+
+.carousel-main {
+  margin-top: 70px;
+  height: 30vh;
+}

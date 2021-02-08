@@ -5,12 +5,14 @@ export const select = {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget',
+    home: '#template-home',
   },
   containerOf: {
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    home: '.home-wrapper',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -26,6 +28,7 @@ export const select = {
     cartButton: '[href="#add-to-cart"]',
   },
   widgets: {
+    carousel: '.carousel-main',
     amount: {
       input: 'input.amount',
       linkDecrease: 'a[href="#less"]',
@@ -129,6 +132,7 @@ export const settings = {
 };
 
 export const templates = {
+  home: Handlebars.compile(document.querySelector(select.templateOf.home).innerHTML),
   menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),

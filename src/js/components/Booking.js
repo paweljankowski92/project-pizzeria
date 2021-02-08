@@ -12,7 +12,7 @@ class Booking {
     thisBooking.initWidgets();
     thisBooking.getData();
     thisBooking.reservationTable = null;
-    console.log('reservationTable', thisBooking.reservationTable);
+    // console.log('reservationTable', thisBooking.reservationTable);
 
   }
 
@@ -282,43 +282,6 @@ class Booking {
         thisBooking.getData();
       });
   }
-
-  // sendOrder () {
-  //   const thisCart = this;
-  //
-  //   const url = settings.db.url + '/' + settings.db.order;
-  //
-  //   const payload = {
-  //     address: thisCart.dom.address['value'],
-  //     phone: thisCart.dom.phone['value'],
-  //     totalPrice: thisCart.totalPrice,
-  //     subTotalPrice: thisCart.subtotalPrice,
-  //     totalNumber: thisCart.totalNumber,
-  //     deliveryFee: thisCart.deliveryFee,
-  //     products: [],
-  //   };
-  //
-  //   for(let prod of thisCart.products) {
-  //     payload.products.push(prod.getData());
-  //   }
-  //   console.log('payload', payload);
-  //
-  //   const options = {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(payload),
-  //   };
-  //
-  //   fetch(url, options)
-  //     .then(function(response) {
-  //       return response.json();
-  //     }).then(function(parsedResponse){
-  //       console.log('parsedResponse', parsedResponse);
-  //     });
-  // }
-
 
 }
 
