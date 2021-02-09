@@ -12,7 +12,7 @@ class Booking {
     thisBooking.initWidgets();
     thisBooking.getData();
     thisBooking.reservationTable = null;
-    // console.log('reservationTable', thisBooking.reservationTable);
+    console.log('reservationTable', thisBooking.reservationTable);
 
   }
 
