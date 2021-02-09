@@ -71,6 +71,7 @@ h3 {
 
 .carousel-main {
   margin: 100px auto;
+  position: relative;
 }
 
 .carousel-cell {
@@ -96,6 +97,7 @@ h3 {
 .gallery {
   margin: 100px auto 20px;
 }
+
 .gallery-row {
   display: flex;
   margin-bottom: 5px;
@@ -106,38 +108,38 @@ h3 {
 }
 
 .image-1 {
-    background-image: url(../../images/pizza-4.jpg);
-    background-size: cover;
-    margin-right: 5px;
-  }
+  background-image: url(../../images/pizza-4.jpg);
+  background-size: cover;
+  margin-right: 5px;
+}
 
 .image-2 {
-    background-image: url(../../images/pizza-5.jpg);
-    background-size: cover;
-    margin-right: 5px;
-  }
+  background-image: url(../../images/pizza-5.jpg);
+  background-size: cover;
+  margin-right: 5px;
+}
 
 .image-3 {
-    background-image: url(../../images/pizza-6.jpg);
-    background-size: cover;
-  }
+  background-image: url(../../images/pizza-6.jpg);
+  background-size: cover;
+}
 
 .image-4 {
-    background-image: url(../../images/pizza-7.jpg);
-    background-size: cover;
-    margin-right: 5px;
-  }
+  background-image: url(../../images/pizza-7.jpg);
+  background-size: cover;
+  margin-right: 5px;
+}
 
 .image-5 {
-    background-image: url(../../images/pizza-8.jpg);
-    background-size: cover;
-    margin-right: 5px;
-  }
+  background-image: url(../../images/pizza-8.jpg);
+  background-size: cover;
+  margin-right: 5px;
+}
 
 .image-6 {
-    background-image: url(../../images/pizza-9.jpg);
-    background-size: cover;
-  }
+  background-image: url(../../images/pizza-9.jpg);
+  background-size: cover;
+}
 
 .overlay {
   display: none;
@@ -153,7 +155,7 @@ h3 {
   color: $color-light;
   font-size: 20px;
   cursor: pointer;
-  }
+}
 
 .box:hover > .overlay{
   display: block;
@@ -165,12 +167,12 @@ h3 {
 
 .overlay i:hover {
   color: $color-main;
-  }
+}
 
 a {
-    color: $color-main;
+  color: $color-main;
 }
 
 a:hover {
-    font-weight: bold;
+  font-weight: bold;
 }

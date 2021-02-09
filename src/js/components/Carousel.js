@@ -1,4 +1,4 @@
-
+/*global Flickity */
 class Carousel {
   constructor(element) {
     const thisCarousel = this;
