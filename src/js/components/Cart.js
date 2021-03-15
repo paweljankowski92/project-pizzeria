@@ -19,7 +19,6 @@ class Cart{
     thisCart.dom.deliveryFee = element.querySelector(select.cart.deliveryFee);
     thisCart.dom.subtotalPrice = element.querySelector(select.cart.subtotalPrice);
     thisCart.dom.totalPrice = element.querySelectorAll(select.cart.totalPrice);
-    console.log('to jest to', thisCart.dom.totalPrice);
     thisCart.dom.totalNumber = element.querySelector(select.cart.totalNumber);
     thisCart.dom.form = element.querySelector(select.cart.form);
     thisCart.dom.address = element.querySelector(select.cart.address);
