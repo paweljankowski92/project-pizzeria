@@ -1,4 +1,4 @@
-import {select, templates, classNames, settings} from '../settings.js';
+import {select, templates, classNames} from '../settings.js';
 import utils from '../utils.js';
 import AmountWidget from './AmountWidget.js';
 
@@ -138,9 +138,9 @@ class Product{
     }
     //multiply price by amoun//
     thisProduct.priceSingle = price;
-        price *= thisProduct.amountWidget.value;
-        thisProduct.priceMulti = price;
-        thisProduct.priceElem.innerHTML = price;
+    price *= thisProduct.amountWidget.value;
+    thisProduct.priceMulti = price;
+    thisProduct.priceElem.innerHTML = price;
 
   }
   addToCart() {

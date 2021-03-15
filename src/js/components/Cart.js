@@ -90,9 +90,9 @@ class Cart{
     }
     thisCart.totalPrice = thisCart.deliveryFee + thisCart.subtotalPrice;
 
-        for(let price of thisCart.dom.totalPrice){
-          price.innerHTML = thisCart.totalPrice;
-        }
+    for(let price of thisCart.dom.totalPrice){
+      price.innerHTML = thisCart.totalPrice;
+    }
 
     thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
     thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
