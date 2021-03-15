@@ -18,7 +18,8 @@ class Cart{
     thisCart.dom.productList = element.querySelector(select.cart.productList);
     thisCart.dom.deliveryFee = element.querySelector(select.cart.deliveryFee);
     thisCart.dom.subtotalPrice = element.querySelector(select.cart.subtotalPrice);
-    thisCart.dom.totalPrice = element.querySelector(select.cart.totalPrice);
+    thisCart.dom.totalPrice = element.querySelectorAll(select.cart.totalPrice);
+    console.log('to jest to', thisCart.dom.totalPrice);
     thisCart.dom.totalNumber = element.querySelector(select.cart.totalNumber);
     thisCart.dom.form = element.querySelector(select.cart.form);
     thisCart.dom.address = element.querySelector(select.cart.address);
@@ -89,11 +90,16 @@ class Cart{
     }
     thisCart.totalPrice = thisCart.deliveryFee + thisCart.subtotalPrice;
 
+        for(let price of thisCart.dom.totalPrice){
+          price.innerHTML = thisCart.totalPrice;
+        }
 
     thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
     thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
     thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
     thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
+
+
 
   }
 

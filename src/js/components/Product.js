@@ -137,12 +137,10 @@ class Product{
       }
     }
     //multiply price by amoun//
-    price *= settings.amountWidget.defaultValue;
-
-    thisProduct.price = price;
-    thisProduct.priceSingle = thisProduct.data.price;
-    // update calculated price in the HTML
-    thisProduct.priceElem.innerHTML = price;
+    thisProduct.priceSingle = price;
+        price *= thisProduct.amountWidget.value;
+        thisProduct.priceMulti = price;
+        thisProduct.priceElem.innerHTML = price;
 
   }
   addToCart() {
@@ -166,9 +164,9 @@ class Product{
     const productSummary = {
       id: thisProduct.id,
       name: thisProduct.data.name,
-      amount: thisProduct.amountWidget.input.value,
+      amount: thisProduct.amountWidget.value,
       priceSingle: thisProduct.priceSingle,
-      price: thisProduct.priceSingle * thisProduct.amountWidget.input.value,
+      price: thisProduct.priceMulti,
       params: thisProduct.prepareCartProductParams()
     };
     return productSummary;
